@@ -96,19 +96,6 @@ The complete system consists of:
 
 ---
 
-## Hardware
-
-Two different camera platforms were used in the project:
-
-* **AI-Thinker ESP32-CAM**
-* **Freenove ESP32-S3-EYE**
-
-The cameras perform the same general role in the system, but their camera configurations and hardware implementations are different. The corresponding firmware is therefore kept separately in the `esp32/` directory.
-
-The system also includes a main ESP32 responsible for the traffic light control logic and communication between the different components.
-
----
-
 ## How It Works
 
 ### 1. Image Capture
@@ -227,39 +214,33 @@ Once the queue is considered sufficiently reduced, control can return to the oth
 
 ## Project Structure
 
-```text
-smart-traffic-light/
-|
-+-- ai/
-|   +-- notebooks/
-|   +-- models/
-|   +-- dataset/
-|   +-- inference/
-|   +-- requirements.txt
-|   +-- README.md
-|
-+-- esp32/
-|   +-- main/
-|   +-- camera-1/
-|   +-- camera-2/
-|   +-- README.md
-|
-+-- api/
-|   +-- app/
-|   +-- models/
-|   +-- requirements.txt
-|   +-- Dockerfile
-|   +-- README.md
-|
-+-- docs/
-|   +-- architecture/
-|   +-- images/
-|   +-- report/
-|
-+-- README.md
-+-- LICENSE
-+-- .gitignore
-```
+    .
+    ├── ai/
+    │   ├── dataset/
+    │   ├── models/
+    │   ├── notebooks/
+    │   ├── inference.py
+    │   └── README.md
+    │
+    ├── api/
+    │   ├── app/
+    │   ├── Dockerfile
+    │   ├── requirements.txt
+    │   └── README.md
+    │
+    ├── docs/
+    │   ├── architecture.md
+    │   ├── control-logic.md
+    │   ├── decisions.md
+    │   ├── hardware.md
+    │   └── report.md
+    │
+    ├── esp32/
+    │   ├── camera-1/
+    │   ├── camera-2/
+    │   └── main/
+    │
+    └── README.md
 
 ### `ai/`
 
@@ -293,6 +274,23 @@ Contains the computer vision backend responsible for:
 ### `docs/`
 
 Contains project documentation, diagrams, prototype images, and the academic report.
+
+---
+
+## Documentation
+
+The project documentation is divided into focused documents to keep the repository organized.
+
+| Document | Description |
+|---|---|
+| [Architecture](docs/architecture.md) | System architecture and communication flow |
+| [Control Logic](docs/control-logic.md) | Adaptive traffic and pedestrian control logic |
+| [Hardware](docs/hardware.md) | Bill of materials, GPIOs, wiring, and assembly |
+| [AI Documentation](ai/README.md) | Machine learning workflow, models, training, and inference |
+| [Dataset Documentation](ai/dataset/README.md) | Dataset structure and image collection workflow |
+| [Dataset Capture](ai/dataset/dataset_capture/README.md) | ESP32-based dataset capture setup and local image collection server |
+| [Models](ai/models/README.md) | Available model versions, training history, and model usage |
+| [API Documentation](api/README.md) | Computer vision API setup, configuration, and deployment |
 
 ---
 
@@ -575,15 +573,15 @@ The following section contains images of the physical prototype, cameras, system
 
 ## Prototype
 
-![Smart Traffic Light Prototype](docs/images/prototype.jpg)
-
-## System Architecture
-
-![System Architecture](docs/images/architecture.png)
+<img src="docs/images/prototype.jpeg" alt="Smart Traffic Light Prototype" width="30%">
 
 ## Camera Setup
 
-![Camera Setup](docs/images/camera-setup.jpg)
+<img src="docs/images/dashboard.png" alt="Smart Traffic Light Prototype" width="50%">
+
+## System Architecture
+
+<img src="docs/images/schema.png" alt="Smart Traffic Light Prototype" width="50%">
 
 ---
 
@@ -647,28 +645,9 @@ Possible improvements include:
 
 ---
 
-# Documentation
-
-Additional documentation is available in:
-
-```text
-docs/
-```
-
-Including:
-
-* System architecture
-* Hardware documentation
-* Software architecture
-* AI/model documentation
-* Prototype images
-* Academic report
-
----
-
 # Author
 
-**Leoni Reis**
+[**Leoni Reis**](https://linkedin.com/in/leonimeloo)
 
 Computer Engineering / Software Engineering / Computer Science
 
